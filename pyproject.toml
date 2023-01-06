@@ -1,0 +1,68 @@
+[build-system]
+build-backend = "pdm.pep517.api"
+requires = ["pdm-pep517>=1.0.0"]
+
+[project]
+authors = [
+  {name = "Andrey Ilin", email = "ilindrey@fastmail.com"}
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Topic :: System :: Logging",
+  "Intended Audience :: Developers",
+  "Natural Language :: English",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.5",
+  "Programming Language :: Python :: 3.6",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy"
+]
+dependencies = [
+  "loguru>=0.6.0,<0.7.0",
+  "logging_tree>=1.9"
+]
+description = "Loguru wrapper for intercepting logging library's logs"
+dynamic = ["version"]
+keywords = ["loguru", "logging", "logger", "log"]
+license = {text = "MIT"}
+name = "loguring"
+readme = "README.md"
+requires-python = ">=3.5"
+
+[tool.black]
+line_length = 88
+target-version = ['py35']
+
+[tool.isort]
+line_length = 88
+lines_after_imports = 2
+profile = "black"
+py_version = 35
+
+[tool.mypy]
+python_version = "3.5"
+
+[tool.pdm]
+version = {source = "scm"}
+
+[tool.pdm.dev-dependencies]
+hints = ["mypy==v0.910"]
+
+[tool.pdm.scripts]
+all = {composite = ["hints", "lint"]}
+hints = "mypy ."
+lint = "pre-commit run --all-files"
+
+[tool.ruff]
+line-length = 88
+src = ["src"]
